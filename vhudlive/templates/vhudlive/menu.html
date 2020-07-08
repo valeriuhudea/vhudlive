@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert" style="text-align:center">
+                <h3>{{ message }}</h3>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <!--{% for item_menu in Storage %}-->
+        <!--h2>{{ item_menu }} storage</h2-->
+        <!--div class="row">
+            <div class="col-8">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col" width="60%">Name</th>
+                        <th scope="col" width="20%">Type</th>
+                        <th scope="col" width="20%">Units</th>
+                    </tr>
+                    </thead>
+            </div-->
+                <!--{% for storage in StorageType %}
+                    {{ storage_type }},
+                {% endfor %}>
+            </div-->
+            <div class="col-2" style="border: grey dotted">
+                <h4>Order Storage:</h4>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form_storage | crispy }}
+                    <input type="hidden" name="storagetype" value="{{ item_menu }}">
+                    <input type="submit" value="Save"/>
+                </form>
+            </div>
+        </div>
+
+
+    <!--{% endfor %}-->
+
+    <h1>Storage:</h1>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col" width="2%">Nr</th>
+            <th scope="col" width="60%">Name - <i>Click Arrow to view Storage</i></th>
+            <th scope="col" width="15%">Type</th>
+            <th scope="col" width="15%">Opt</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item_menu in Storage %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ item_menu }}</td>
+                {% if item_menu.storage_type %}
+                    <!--td>{{ item_menu.storage_values }} Add <a href="/add/sub/{{ item_menu.id }}/small/0"><i class="fas fa-plus-circle"></i></a><a href="/add/sub/{{ item_menu.id }}/small/1"><i
+                            class="fas fa-arrow-alt-circle-up"></i></a></td>
+                    <td>{{ item_menu.storage_values }} Add <a href="/add/sub/{{ item_menu.id }}/large/0"><i class="fas fa-plus-circle"></i></a><a href="/add/sub/{{ item_menu.id }}/large/1"><i
+                            class="fas fa-arrow-alt-circle-up"></i></a></td>
+                {% else %}
+                    <td></td>
+                    <td>{{ item_menu.storage_values }} Add <a href="/add/sub/{{ item_menu.id }}/large/0"><i class="fas fa-plus-circle"></i></a><a href="/add/sub/{{ item_menu.id }}/large/1"><i
+                            class="fas fa-arrow-alt-circle-up"></i></a></td-->
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

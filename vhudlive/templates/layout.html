@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Vhud Storage Live
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="static/vhud.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="static/faviconz.ico" type="image/x-icon">
+</head>
+
+
+<body>
+{% if user.is_authenticated %}
+    <div class="navbar sticky-top navbar-dark bg-dark">
+        <div class="navbar-brand"> Logged in Storage as <span style='color: #00b8ff;'>{{ user.get_username }}</span>:</div>
+        <div>
+            <a href="">
+                <button class="btn btn-outline-success mx-1 my-xl-0 my-2">Storage</button>
+            </a>
+            <a href="{% url "logout_page" %}">
+                <button class="btn btn-outline-danger ml-1 my-xl-0 my-2"" type="button">Logout</button>
+            </a>
+            <a href="">
+                <button class="btn btn-outline-primary ml-1 my-xl-0 my-2" type="button" title="All products">Orders</i>
+                </button>
+            </a>
+            <a href="">
+                <button class="btn btn-outline-info ml-1 my-xl-0 my-2" type="button" title="List storages"><i class="fa fa-list"></i>
+                </button>
+            </a>
+
+
+            {% if request.user.is_staff %}
+
+                <a href="/api/v1/storages">
+                    <button class="btn btn-outline-primary ml-1 my-xl-0 my-2" type="button" title="API's"><i class="fas fa-code-branch"></i>
+                    </button>
+                </a>
+
+                <a href="/admin">
+                    <button class="btn btn-outline-info ml-1 my-xl-0 my-2" type="button" title="Admin panel"><i class="fa fa-cog"></i>
+                    </button>
+                </a>
+            {% endif %}
+
+        </div>
+    </div>
+{% else %}
+    <div class="navbar navbar-light" style="background-color: #6ac9e5;">
+        <a class="navbar-brand" href="/">Vhud Live</a>
+        <form class="form-inline my-2 my-lg-0" action="{% url "login_page" %}" autocomplete="off" method="POST">
+            {% csrf_token %}
+            <div class="col-auto pl-0">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text "><i class="fa fa-user"></i></div>
+                    </div>
+                    <input type="text" class="form-control my-2 my-sm-0 mr-2" value="" placeholder="Enter nickname" name="username" autofocus maxlength="254" required id="id_username">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fa fa-lock"></i></div>
+                    </div>
+                    <input type="password" class="form-control my-2 my-sm-0" value="" placeholder="Enter password" type="password" name="password" required id="id_password">
+                </div>
+            </div>
+            <div class="col-auto pl-0 pr-0">
+                <button class="btn btn-outline-light my-2 my-sm-0 mr-2" type="submit">Log-in</button>
+            </div>
+        </form>
+        <a href="{% url "register_page" %}">
+            <button class="btn btn-outline-primary mx-1 my-xl-0 my-2">Register</button>
+        </a>
+    </div>
+{% endif %}
+</div>
+<div class="mt-2 col-md-12"></div>
+{% block body %}{% endblock %}
+</body>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify">Vhud Live Stroage Service, API Services and Usage Statistics. 
+Address Corporate Office : Fantasy, B-999(A), First floor Sector-66, Playfull Road 3, Fantasia 11010, Romania. </p>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Categories</h6>
+            <ul class="footer-links">
+              <li><a href="">Android</a></li>
+              <li><a href="">Python</a></li>
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="">About Us</a></li>
+              <li><a href="">Contact Us</a></li>
+              <li><a href="">Donate</a></li>
+              <li><a href="">Privacy Policy</a></li>
+              <li><a href="">Sitemap</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
+         <a href="#">Vhud Live</a>
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+              <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>   
+            </ul>
+          </div>
+        </div>
+      </div>
+</footer>
+</html>

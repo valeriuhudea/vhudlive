@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    {% if price_all == 0 %}
+        <h1>Storage Orders are empty</h1>
+    {% else %}
+        <div class="col-12">
+            <table class="table table-sm table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Product name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Nutrition Info</th>
+                    <th scope="col">Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if Storage %}
+                    {% for item in Storage %}
+                        <tr>
+                            <td>{{ item }}</td>
+                            <td>{{ item.storage_name }} USD</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+
+                {% if Sub %}
+                    {% for item in Sub %}
+                        <tr>
+                            <td>{{ item }}</td>
+                            <td>{{ item.price }} Units</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+
+                </tbody>
+
+            </table>
+            <h4 style="text-align:center">Count: {{ price_all }} Units</h4>
+            <div class="mt-2 col-md-12"></div>
+            <div class="mt-2 col-md-12"></div>
+
+            <div style="text-align: center;">
+                <a href="{% url "make_order" %}"><input class="btn btn-success btn-lg btn-block" type="button" value="Update Storage">
+                </a>
+            </div>
+
+            <div class="mt-2 col-md-12"></div>
+            <div class="mt-2 col-md-12"></div>
+
+            <div style="text-align: center;">
+                <a href="{% url "clear_cart" %}"><input class="btn-outline-danger btn-sm" type="button" value="Clear Temp Storage">
+                </a>
+            </div>
+
+
+        </div>
+
+
+    {% endif %}
+{% endblock %}

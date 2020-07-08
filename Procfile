@@ -1,0 +1,1 @@
+web: gunicorn vhud.wsgi --log-file -

@@ -1,0 +1,22 @@
+{
+  "name": "Vhud Live",
+  "description": "Live Storage, API Services and Analytics with stats.",
+  "image": "heroku/python",
+  "repository": "https://github.com/valeriuhudea/vhudlive",
+  "keywords": ["python", "django" ],
+  "addons": [ "heroku-postgresql" ],
+  "env": {
+    "SECRET_KEY": {
+      "description": "The secret key for the vhud application.",
+      "generator": "secret"
+    }
+  },
+  "environments": {
+    "test": {
+      "scripts": {
+        "test-setup": "python manage.py collectstatic --noinput",
+        "test": "python manage.py test"
+      }
+    }
+  }
+}
