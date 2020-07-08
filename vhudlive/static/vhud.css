@@ -37,20 +37,23 @@ hr {
     word-wrap: break-word;
 }
 
-.site-footer
-{
+.site-footer {
   background-color:#26272b;
+  clear: both;
   position: relative;
-  bottom: 0;
+  height: 200px;
+  margin-top: 400px;
+  margin-bottom: 0;
   left: 0;
   right: 0;
   /*width:100%;*/
   /*display: flex;*/
-  padding:10px 0 15px;
+  padding:5px 0 0;
   font-size:15px;
   line-height:14px;
   color:#737373;
 }
+
 .site-footer hr
 {
   border-top-color:#bbb;
